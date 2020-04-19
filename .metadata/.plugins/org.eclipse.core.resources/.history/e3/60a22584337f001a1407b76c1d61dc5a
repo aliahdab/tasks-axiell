@@ -1,0 +1,18 @@
+package tasks;
+
+public class tesk6 {
+
+	public static void main (String[]args) {
+		calcPrime(9);
+	}
+
+	private static void calcPrime(int n) {
+		boolean[] A = new boolean[n+1] ;
+		if(n>=2) {
+			for(int i=2; i<n;i++) {
+				A[i]=true;
+			}
+		}
+		System.out.println(A[0]);
+	}
+}

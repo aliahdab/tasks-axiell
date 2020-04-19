@@ -1,0 +1,56 @@
+package tasks;
+
+import java.util.ArrayList;
+
+public class task2 {
+
+	private static int TARGET_SUM = 100;
+	private static int[] VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	private static String[] signs = { "+", "-", "" };
+	private static ArrayList<String> test1 = new ArrayList<String>();
+	private static ArrayList<String> test = new ArrayList<String>();
+	private static ArrayList<String> test2 = new ArrayList<String>();
+
+	private static ArrayList<String> fun(int i) {
+		if (i < 9 && i != 0) {
+			for (String c : signs) {
+				test.add(i + c + (i + 1));
+				test1.add(i + c + (i + 1));
+			}
+		}
+		return test;
+	}
+
+	private static ArrayList<String> genPos(int i) {
+		fun(i);
+		for (int j = 0; j < 3; j++) {
+			test.set(j, test1.get(j) + "+" + (i + 2));
+			test.add(j + 3, test1.get(j) + "-" + (i + 2));
+			test.add(j + 3, test1.get(j) + "" + (i + 2));
+		}
+		return test;
+	}
+
+	private static ArrayList<String> genTwoPos(int k,int v) {
+		ArrayList<String> array = null;
+		
+	for(int i=0;i<genPos(v).size();i++) {
+		for(int j=0;j<genPos(k).size();j++) {
+			array.add(genPos(i).get(i)+genPos(j).get(j));
+		}
+	}
+	
+		return array ;
+	}
+
+	public static void main(String[] args) {
+		genTwoPos(1,2);
+		System.out.println(test);
+	}
+}
+
+/*
+ * Task 2 Write a program that outputs all possibilities to put + or - or
+ * nothing between the numbers 1, 2, ..., 9 (in this order) such that the result
+ * is always 100. For example: 1 + 2 + 34 – 5 + 67 – 8 + 9 = 100.
+ */
